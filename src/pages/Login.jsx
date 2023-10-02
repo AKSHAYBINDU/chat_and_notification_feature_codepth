@@ -1,6 +1,13 @@
 import loginImg from "../assets/login.svg";
+import { auth, provider} from "../firebase"
+import { signInWithPopup } from "firebase/auth";
 
 const Login = () => {
+  const signInWithGoogle  =  () => {
+    
+    signInWithPopup(auth,provider).catch((error) => console.log(error.message));
+    
+  }
 
 
   return (
@@ -16,10 +23,10 @@ const Login = () => {
         </div>
         <p className=" text-md leading-5 text-slate-700 font-serif mb-5">
           Welcome to <span className=" font-bold text-slate-600">WeChat</span>  - Connect, chat, and
-          share moments  with <br /> friends and familyseamlessly  on our
+          share moments  with <br /> friends and family seamlessly  on our
           messaging platform.
         </p>
-        <button className=" py-2 px-10 mt-5 bg-gradient-to-r from-slate-400 to-slate-700  text-slate-300 hover:font-semibold hover:text-slate-100 rounded-full shadow-lg hover:shadow-slate-400">
+        <button onClick={signInWithGoogle} className=" py-2 px-10 mt-5 bg-gradient-to-r from-slate-400 to-slate-700  text-slate-300 hover:font-semibold hover:text-slate-100 rounded-full shadow-lg hover:shadow-slate-400">
           Sign in with Google
         </button>
       </div>

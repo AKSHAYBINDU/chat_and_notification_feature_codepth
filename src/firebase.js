@@ -1,6 +1,9 @@
 
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider} from "firebase/auth"
+import { GoogleAuthProvider, getAuth } from "firebase/auth"
+import { getFirestore } from "firebase/firestore";
+import { getMessaging, getToken } from "firebase/messaging"
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -13,9 +16,33 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-
-const auth = app.auth();
+const auth = getAuth();
 const provider = new GoogleAuthProvider();
+const db = getFirestore();
+ 
+const messaging = getMessaging(app)
 
-export {auth, provider}
+function requestPermission() {
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      console.log("Notification permission granted.");
+     
+      getToken(messaging, { vapidKey: 'BLK3tbbBdkDqcKSCIu0bT6wuvG10gH6tt9HLab-NslnzUNlTehIDG4oXd6g-WHi8bWKvpupYyHkFQtdsSV1vatI',
+     }).then((currentToken) => {
+          if (currentToken) {
+            console.log("currentToken:", currentToken);
+          } else {
+            console.log("Can not get token.")
+          }
+        }
+  );
+    } else {
+      console.log("Do not have permission.")
+    }
+  })
+}
+
+requestPermission();
+export { auth, provider, db, messaging, app }

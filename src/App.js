@@ -2,8 +2,8 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 // import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // import { useContext } from "react";
-// import { useAuthState} from 'react-firebase-hooks/auth';
-// import { auth, provider} from "./firebase"
+import { useAuthState} from 'react-firebase-hooks/auth';
+import { auth} from "./firebase"
 
 function App() {
   // const { currentUser } = useContext(AuthContext);
@@ -12,8 +12,8 @@ function App() {
   //     return <Navigate to="/login" />;
   //   }
   // };
-  // const [user] = useAuthState(auth);
-  const user = false;
+  const [user] = useAuthState(auth);
+  
   return (
     <div>
       {!user ? <Login/> : <Home />}
