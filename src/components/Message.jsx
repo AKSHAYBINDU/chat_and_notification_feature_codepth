@@ -25,8 +25,8 @@ const Message = ({ sender, message, time }) => {
         <p
           className={` ${
             sender === user?.displayName
-              ? "bg-white rounded-l-lg rounded-b-lg p-1 px-2 ml-auto w-fit min-w-full max-w-[80%]"
-              : "bg-slate-700 text-white  rounded-r-lg p-1 px-2 rounded-b-lg object-right w-fit max-w-[80%]"
+              ? "bg-white rounded-l-lg rounded-b-lg p-1 px-2 ml-auto w-fit min-w-full max-w-[80%] border border-slate-700"
+              : "bg-slate-700 text-white  rounded-r-lg p-1 px-2 rounded-b-lg object-right w-fit max-w-[80%] border border-slate-900"
           }`}
         >
           {message}

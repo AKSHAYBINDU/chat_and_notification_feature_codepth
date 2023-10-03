@@ -12,8 +12,8 @@ const Login = () => {
 
   return (
     <div className=" bg-slate-200 h-screen">
-      <div className="p-5 bg-gradient-to-r from-slate-400 to-slate-700 rounded-b-md ">
-        <h1 className=" logo text-slate-900 tracking-tighter ml-10 sm:ml-10  text-2xl">
+      <div className="p-5 bg-slate-600 rounded-b-md ">
+        <h1 className=" logo text-white tracking-tighter ml-10 sm:ml-10  text-2xl">
           WeChat
         </h1>
       </div>

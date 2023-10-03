@@ -23,12 +23,12 @@ const provider = new GoogleAuthProvider();
 const db = getFirestore();
  
 const messaging = getMessaging(app)
+// For initializing instant chat notification.
 
 function requestPermission() {
   Notification.requestPermission().then((permission) => {
     if (permission === "granted") {
       console.log("Notification permission granted.");
-     
       getToken(messaging, { vapidKey: 'BLK3tbbBdkDqcKSCIu0bT6wuvG10gH6tt9HLab-NslnzUNlTehIDG4oXd6g-WHi8bWKvpupYyHkFQtdsSV1vatI',
      }).then((currentToken) => {
           if (currentToken) {
@@ -37,7 +37,9 @@ function requestPermission() {
             console.log("Can not get token.")
           }
         }
-  );
+  ).catch((err) =>{
+    console.log("An error occurred while retrieving token." , err);
+  });
     } else {
       console.log("Do not have permission.")
     }
@@ -45,4 +47,18 @@ function requestPermission() {
 }
 
 requestPermission();
+
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("/firebase-messaging-sw.js")
+      .then((registration) => {
+        console.log("Service Worker registered with scope:", registration.scope);
+      })
+      .catch((error) => {
+        console.error("Service Worker registration failed:", error);
+      });
+  }
+  
+
 export { auth, provider, db, messaging, app }
