@@ -56,7 +56,7 @@ const Home = () => {
   return (
     
 
-      <div className=" min-h-screen flex flex-col gap-5 background-image ">
+      <div className=" bg-slate-200 flex flex-col gap-5  ">
         <div className=" flex justify-between p-5 bg-slate-600 rounded-b-md ">
           <h1 className=" logo text-white tracking-tighter ml-10 text-2xl ">
             WeChat
@@ -80,7 +80,7 @@ const Home = () => {
                 />
               );
             })}
-            <div ref={lastMessage} className=" mb-16"></div>
+            <div ref={lastMessage} className=" mb-10"></div>
           </div>
 
           <div className=" m mr-5 fixed bottom-2 sm:mx-2 md:px-40 flex gap-3 items-center justify-between align-middle w-full">
